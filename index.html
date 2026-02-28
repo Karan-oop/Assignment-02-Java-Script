@@ -1,121 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Async Weather Tracker</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-  <!-- Background blobs -->
-  <div class="bg-blob blob-1"></div>
-  <div class="bg-blob blob-2"></div>
-
-  <div class="container">
+  <div class="page">
 
     <!-- Header -->
-    <header>
-      <span class="header-tag">// ASYNC WEATHER TRACKER</span>
-      <h1>WEATHER<br/><span class="accent-text">RADAR</span></h1>
-      <p>Fetch real-time weather using async/await &amp; the Fetch API</p>
+    <header class="header">
+      <span class="header-icon">⛅</span>
+      <h1 class="header-title">Async Weather Tracker</h1>
     </header>
 
-    <!-- Search -->
-    <section class="search-section">
-      <div class="search-box" id="searchBox">
-        <span class="search-icon">⌕</span>
-        <input
-          type="text"
-          id="cityInput"
-          placeholder="Enter city name (e.g. Mumbai, Tokyo...)"
-          autocomplete="off"
-        />
-        <button class="search-btn" id="searchBtn">
-          <span id="btnText">Search</span>
-          <span id="btnSpinner" class="spinner" style="display:none;"></span>
-        </button>
-      </div>
-      <div class="message" id="message"></div>
-    </section>
+    <!-- Main Grid: Left + Right -->
+    <main class="main-grid">
 
-    <!-- Weather Card -->
-    <section class="weather-card" id="weatherCard">
-      <div class="weather-top">
-        <div class="weather-left">
-          <div class="country-badge" id="countryBadge"></div>
-          <div class="city-name" id="cityName"></div>
-          <div class="temp-big" id="tempBig"></div>
-          <div class="feels-like" id="feelsLike"></div>
+      <!-- LEFT: Search Panel -->
+      <section class="panel panel-left">
+        <p class="panel-label">Search City</p>
+        <div class="search-row">
+          <input
+            type="text"
+            id="cityInput"
+            class="search-input"
+            placeholder="Delhi, London..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button class="search-btn" id="searchBtn">
+            <span class="btn-text">Search</span>
+            <span class="btn-spinner" id="btnSpinner"></span>
+          </button>
         </div>
-        <div class="weather-right">
-          <div class="weather-emoji" id="weatherEmoji"></div>
-          <div class="weather-condition" id="weatherCondition"></div>
-        </div>
-      </div>
+        <div class="inline-msg" id="inlineMsg"></div>
 
-      <div class="divider"></div>
-
-      <div class="stats-grid">
-        <div class="stat">
-          <div class="stat-label">Humidity</div>
-          <div class="stat-value" id="humidity">—</div>
-          <div class="stat-unit">percent</div>
+        <p class="panel-label">Search History</p>
+        <div class="history-wrap" id="historyWrap">
+          <span class="no-history" id="noHistory">No history yet</span>
         </div>
-        <div class="stat">
-          <div class="stat-label">Wind Speed</div>
-          <div class="stat-value" id="windSpeed">—</div>
-          <div class="stat-unit">km/h</div>
-        </div>
-        <div class="stat">
-          <div class="stat-label">Visibility</div>
-          <div class="stat-value" id="visibility">—</div>
-          <div class="stat-unit">km</div>
-        </div>
-        <div class="stat">
-          <div class="stat-label">Pressure</div>
-          <div class="stat-value" id="pressure">—</div>
-          <div class="stat-unit">hPa</div>
-        </div>
-      </div>
+        <button class="clear-hist-btn" id="clearHistBtn">✕ Clear history</button>
+      </section>
 
-      <div class="last-updated" id="lastUpdated"></div>
-    </section>
-
-    <!-- History -->
-    <section class="history-section">
-      <div class="section-header">
-        <span class="section-title">// Recent Searches</span>
-        <button class="clear-history" id="clearHistoryBtn">Clear All</button>
-      </div>
-      <div class="history-list" id="historyList">
-        <span class="no-history">No searches yet.</span>
-      </div>
-    </section>
-
-    <!-- Console Panel -->
-    <section class="console-section">
-      <div class="console-header">
-        <div class="console-dots">
-          <span class="d1"></span>
-          <span class="d2"></span>
-          <span class="d3"></span>
-        </div>
-        <span class="console-title">Event Loop &amp; Execution Log</span>
-        <button class="clear-console" id="clearConsoleBtn">clear</button>
-      </div>
-      <div class="console-body" id="consoleBody">
-        <div class="log-line log-info">
-          <span class="log-time">00:00:000</span>
-          <span class="log-type">[INIT]</span>
-          <span class="log-msg">Weather Tracker initialized. Waiting for input...</span>
-        </div>
-      </div>
-    </section>
-
-  </div>
-
-  <script src="app.js"></script>
-</body>
-</html>
+      
