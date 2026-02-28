@@ -48,4 +48,68 @@
         <button class="clear-hist-btn" id="clearHistBtn">✕ Clear history</button>
       </section>
 
-      
+      <!-- RIGHT: Weather Info Panel -->
+      <section class="panel panel-right" id="panelRight">
+        <p class="panel-label">Weather Info</p>
+
+        <div class="empty-state" id="emptyState">
+          <div class="empty-icon">🌍</div>
+          <p>Search a city to see weather</p>
+        </div>
+
+        <div class="weather-error" id="weatherErr"></div>
+
+        <div class="weather-rows" id="weatherRows">
+          <div class="w-row">
+            <span class="w-key">City</span>
+            <span class="w-val" id="wCity">—</span>
+          </div>
+          <div class="w-row">
+            <span class="w-key">Temp</span>
+            <span class="w-val w-accent" id="wTemp">—</span>
+          </div>
+          <div class="w-row">
+            <span class="w-key">Weather</span>
+            <span class="w-val" id="wWeather">—</span>
+          </div>
+          <div class="w-row">
+            <span class="w-key">Humidity</span>
+            <span class="w-val" id="wHumidity">—</span>
+          </div>
+          <div class="w-row">
+            <span class="w-key">Wind</span>
+            <span class="w-val" id="wWind">—</span>
+          </div>
+          <div class="w-row">
+            <span class="w-key">Feels Like</span>
+            <span class="w-val" id="wFeels">—</span>
+          </div>
+          <div class="w-row">
+            <span class="w-key">Visibility</span>
+            <span class="w-val" id="wVis">—</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Console Panel -->
+    <section class="console-section">
+      <div class="console-topbar">
+        <div class="c-dots">
+          <span class="cdot r"></span>
+          <span class="cdot y"></span>
+          <span class="cdot g"></span>
+        </div>
+        <span class="console-title">Console – Event Loop</span>
+        <button class="c-clear-btn" id="clearConsoleBtn">Clear</button>
+      </div>
+      <div class="console-body" id="consoleBody"></div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
