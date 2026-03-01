@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="kk.css"/>
 </head>
 <body>
 
@@ -24,24 +24,45 @@
 
       <!-- LEFT: Search Panel -->
       <section class="panel panel-left">
-        <p class="panel-label">Search City</p>
-        <div class="search-row">
-          <input
-            type="text"
-            id="cityInput"
-            class="search-input"
-            placeholder="Delhi, London..."
-            autocomplete="off"
-            spellcheck="false"
-          />
-          <button class="search-btn" id="searchBtn">
-            <span class="btn-text">Search</span>
-            <span class="btn-spinner" id="btnSpinner"></span>
-          </button>
+        <p class="panel-label">Search City, Town or Locality</p>
+        <div class="search-wrap-outer">
+          <div class="search-row">
+            <div class="input-wrap">
+              <span class="input-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              </span>
+              <input
+                type="text"
+                id="cityInput"
+                class="search-input"
+                placeholder="e.g. Lajpat Nagar, Bandra, Shimla..."
+                autocomplete="off"
+                spellcheck="false"
+              />
+              <button class="input-clear-btn" id="inputClearBtn" title="Clear">✕</button>
+            </div>
+            <button class="search-btn" id="searchBtn">
+              <span class="btn-text">Search</span>
+              <span class="btn-spinner" id="btnSpinner"></span>
+            </button>
+          </div>
+
+          <!-- Autocomplete Dropdown -->
+          <div class="autocomplete-drop" id="autocompleteDrop"></div>
         </div>
+
         <div class="inline-msg" id="inlineMsg"></div>
 
-        <p class="panel-label">Search History</p>
+        <!-- Search tips -->
+        <div class="search-tips">
+          <span class="tip-label">Try:</span>
+          <button class="tip-chip" data-q="Almora, Uttrakhand">Almora</button>
+          <button class="tip-chip" data-q="Lajpat Nagar, Delhi">Lajpat Nagar</button>
+          <button class="tip-chip" data-q="Sohna, Haryana">Sohna</button>
+          <button class="tip-chip" data-q="Shimla">Shimla</button>
+        </div>
+
+        <p class="panel-label" style="margin-top:18px;">Search History</p>
         <div class="history-wrap" id="historyWrap">
           <span class="no-history" id="noHistory">No history yet</span>
         </div>
@@ -57,59 +78,4 @@
           <p>Search a city to see weather</p>
         </div>
 
-        <div class="weather-error" id="weatherErr"></div>
-
-        <div class="weather-rows" id="weatherRows">
-          <div class="w-row">
-            <span class="w-key">City</span>
-            <span class="w-val" id="wCity">—</span>
-          </div>
-          <div class="w-row">
-            <span class="w-key">Temp</span>
-            <span class="w-val w-accent" id="wTemp">—</span>
-          </div>
-          <div class="w-row">
-            <span class="w-key">Weather</span>
-            <span class="w-val" id="wWeather">—</span>
-          </div>
-          <div class="w-row">
-            <span class="w-key">Humidity</span>
-            <span class="w-val" id="wHumidity">—</span>
-          </div>
-          <div class="w-row">
-            <span class="w-key">Wind</span>
-            <span class="w-val" id="wWind">—</span>
-          </div>
-          <div class="w-row">
-            <span class="w-key">Feels Like</span>
-            <span class="w-val" id="wFeels">—</span>
-          </div>
-          <div class="w-row">
-            <span class="w-key">Visibility</span>
-            <span class="w-val" id="wVis">—</span>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <!-- Console Panel -->
-    <section class="console-section">
-      <div class="console-topbar">
-        <div class="c-dots">
-          <span class="cdot r"></span>
-          <span class="cdot y"></span>
-          <span class="cdot g"></span>
-        </div>
-        <span class="console-title">Console – Event Loop</span>
-        <button class="c-clear-btn" id="clearConsoleBtn">Clear</button>
-      </div>
-      <div class="console-body" id="consoleBody"></div>
-    </section>
-
-  </div>
-
-  <script src="script.js"></script>
-</body>
-
-</html>
+ 
