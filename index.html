@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="kk.css"/>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
@@ -78,4 +78,65 @@
           <p>Search a city to see weather</p>
         </div>
 
- 
+ <div class="weather-error" id="weatherErr"></div>
+
+        <div class="weather-rows" id="weatherRows">
+          <div class="w-row">
+            <span class="w-key">Location</span>
+            <div class="w-val-group">
+              <span class="w-val" id="wCity">—</span>
+              <span class="loc-badge" id="locBadge"></span>
+            </div>
+          </div>
+          <div class="w-row">
+            <span class="w-key">Area / State</span>
+            <span class="w-val w-dim" id="wArea">—</span>
+          </div>
+          <div class="w-row">
+            <span class="w-key">Temp</span>
+            <span class="w-val w-accent" id="wTemp">—</span>
+          </div>
+          <div class="w-row">
+            <span class="w-key">Weather</span>
+            <span class="w-val" id="wWeather">—</span>
+          </div>
+          <div class="w-row">
+            <span class="w-key">Humidity</span>
+            <span class="w-val" id="wHumidity">—</span>
+          </div>
+          <div class="w-row">
+            <span class="w-key">Wind</span>
+            <span class="w-val" id="wWind">—</span>
+          </div>
+          <div class="w-row">
+            <span class="w-key">Feels Like</span>
+            <span class="w-val" id="wFeels">—</span>
+          </div>
+          <div class="w-row">
+            <span class="w-key">Visibility</span>
+            <span class="w-val" id="wVis">—</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Console Panel -->
+    <section class="console-section">
+      <div class="console-topbar">
+        <div class="c-dots">
+          <span class="cdot r"></span>
+          <span class="cdot y"></span>
+          <span class="cdot g"></span>
+        </div>
+        <span class="console-title">Console – Event Loop</span>
+        <button class="c-clear-btn" id="clearConsoleBtn">Clear</button>
+      </div>
+      <div class="console-body" id="consoleBody"></div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
