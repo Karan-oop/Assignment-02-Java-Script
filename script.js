@@ -1,17 +1,12 @@
-/* =============================================
-   ASYNC WEATHER TRACKER — script.js
-   Covers: async/await · .then()/.catch()
-           try/catch/finally · Local Storage
-           Event Loop Execution Tracing
-   ============================================= */
+/* Async Weather Tracker — "script.js" */
 
-// ── CONFIG ──────────────────────────────────────
+// CONFIG //
 const API_KEY  = "bd5e378503939ddaee76f12ad7a97608";
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 const LS_KEY   = "wt_history_v1";
 const MAX_HIST = 8;
 
-// ── DOM ─────────────────────────────────────────
+// DOM //
 const cityInput      = document.getElementById("cityInput");
 const searchBtn      = document.getElementById("searchBtn");
 const btnSpinner     = document.getElementById("btnSpinner");
@@ -286,18 +281,3 @@ renderHistory();
 cLog("info", `[INIT] LocalStorage read — <span class="hl">${getHistory().length}</span> history item(s) loaded.`);
 
 showEmpty();
-
-/*
-  EVENT LOOP CHEAT SHEET (for assignment reference)
-  ─────────────────────────────────────────────────
-  Call Stack      → synchronous code, runs line by line
-  Web APIs        → browser handles: fetch, setTimeout, DOM events
-  Microtask Queue → Promise callbacks (.then / async-await continuations)
-  Task Queue      → setTimeout, setInterval, DOM event callbacks
-
-  Order of execution per "tick":
-  1. Run all synchronous code on Call Stack until empty
-  2. Drain entire Microtask Queue (Promises)
-  3. Pick ONE task from Task Queue (setTimeout etc.)
-  4. Repeat
-*/
