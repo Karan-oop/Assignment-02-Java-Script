@@ -1,8 +1,5 @@
-/* =============================================
-   ASYNC WEATHER TRACKER — style.css
-   Solar Lime #B6FF3B + Void Black #0B0F14
-   Layout: clean 2-panel grid + console below
-   ============================================= */
+/* Async Weather Tracker "style.css"
+Colour Pallet : Solar Lime #B6FF3B + Void Black #0B0F14 */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -141,18 +138,42 @@ body::before {
 }
 
 /* ─── Search Row ──────────────────────────── */
+.search-wrap-outer { position: relative; }
+
 .search-row {
   display: flex;
   gap: 10px;
-  margin-bottom: 8px;
+  margin-bottom: 0;
 }
+
+/* Input wrapper with icon */
+.input-wrap {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  transition: color var(--transition);
+  z-index: 1;
+}
+
+.input-wrap:focus-within .input-icon { color: var(--lime); }
 
 .search-input {
   flex: 1;
+  width: 100%;
   background: var(--void-2);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 11px 16px;
+  padding: 11px 32px 11px 34px;
   font-family: 'Outfit', sans-serif;
   font-size: 14px;
   color: var(--text);
@@ -169,136 +190,112 @@ body::before {
   box-shadow: 0 0 0 3px rgba(182,255,59,0.07);
 }
 
-/* Search Button */
-.search-btn {
-  background: var(--lime);
-  color: var(--void);
+/* Clear X button inside input */
+.input-clear-btn {
+  position: absolute;
+  right: 10px;
+  background: none;
   border: none;
-  border-radius: var(--radius);
-  padding: 11px 20px;
-  font-family: 'Syne', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+  color: var(--muted);
   cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  flex-shrink: 0;
-  min-width: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
-}
-
-.search-btn::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,0);
-  transition: background 0.2s;
-}
-
-.search-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(182,255,59,0.38);
-}
-
-.search-btn:hover::after { background: rgba(255,255,255,0.12); }
-.search-btn:active  { transform: translateY(0); box-shadow: none; }
-.search-btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none; }
-
-.btn-text { transition: opacity 0.15s; }
-.search-btn.loading .btn-text { opacity: 0; }
-
-.btn-spinner {
-  position: absolute;
-  width: 15px; height: 15px;
-  border: 2px solid rgba(11,15,20,0.25);
-  border-top-color: var(--void);
-  border-radius: 50%;
+  font-size: 11px;
+  padding: 4px;
+  border-radius: 4px;
   opacity: 0;
-  animation: spin 0.65s linear infinite;
-  transition: opacity 0.15s;
+  pointer-events: none;
+  transition: opacity 0.2s, color 0.2s;
+  z-index: 1;
 }
 
-.search-btn.loading .btn-spinner { opacity: 1; }
-@keyframes spin { to { transform: rotate(360deg); } }
+.input-clear-btn.visible { opacity: 1; pointer-events: all; }
+.input-clear-btn:hover { color: var(--error); }
 
-/* Inline message */
-.inline-msg {
-  font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  border-radius: 8px;
+/* ── Autocomplete Dropdown ─────────────────── */
+.autocomplete-drop {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--panel-bg);
+  border: 1px solid var(--border-md);
+  border-radius: var(--radius);
   overflow: hidden;
+  z-index: 100;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
   max-height: 0;
   opacity: 0;
-  transition: max-height 0.35s ease, opacity 0.25s ease, padding 0.25s ease, margin 0.25s ease;
-  margin-bottom: 0;
+  pointer-events: none;
+  transition: max-height 0.3s ease, opacity 0.2s ease;
 }
 
-.inline-msg.show {
-  max-height: 60px;
+.autocomplete-drop.open {
+  max-height: 280px;
   opacity: 1;
-  padding: 9px 14px;
-  margin-bottom: 14px;
+  pointer-events: all;
 }
 
-.inline-msg.err  { background: var(--error-bg); border: 1px solid rgba(255,77,109,0.25); color: var(--error); }
-.inline-msg.ok   { background: var(--lime-08); border: 1px solid rgba(182,255,59,0.2); color: var(--lime); }
-
-/* ─── History ──────────────────────────────── */
-.history-wrap {
+.ac-item {
   display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  min-height: 34px;
-  align-items: flex-start;
-  margin-bottom: 16px;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(182,255,59,0.05);
+  transition: background var(--transition);
+  animation: acIn 0.2s ease both;
 }
 
-.no-history {
+.ac-item:last-child { border-bottom: none; }
+
+.ac-item:hover, .ac-item.active {
+  background: var(--lime-08);
+}
+
+.ac-pin {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.ac-info { flex: 1; min-width: 0; }
+
+.ac-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ac-name em {
+  color: var(--lime);
+  font-style: normal;
+}
+
+.ac-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ac-coords {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: rgba(182,255,59,0.4);
+  flex-shrink: 0;
+}
+
+.ac-loading, .ac-empty {
+  padding: 14px;
+  text-align: center;
+  font-family: 'DM Mono', monospace;
   font-size: 12px;
   color: var(--muted);
-  font-family: 'DM Mono', monospace;
-  padding-top: 4px;
-}
-
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 13px;
-  background: var(--lime);
-  color: var(--void);
-  border: none;
-  border-radius: 20px;
-  font-family: 'Syne', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
-  animation: chipIn 0.3s cubic-bezier(0.22,1,0.36,1) both;
-}
-
-.chip:hover {
-  transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 5px 16px rgba(182,255,59,0.4);
-  background: #c8ff5a;
-}
-
-.chip:active { transform: scale(0.97); }
-
-@keyframes chipIn {
-  from { opacity: 0; transform: scale(0.75); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
-/* Clear history */
-.clear-hist-btn {
-  background: none;
-  border: 1px solid rgba(255,77,109,0.18);
-   color: var(--muted);
 }
 
 @keyframes acIn {
@@ -731,4 +728,3 @@ body::before {
 @keyframes fadeIn {
   from { opacity: 0; } to { opacity: 1; }
 }
-
