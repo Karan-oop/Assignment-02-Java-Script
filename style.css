@@ -718,7 +718,7 @@ body::before {
 .c-text .hl { color: var(--lime); }
 .c-text .hl-blue { color: #38bdf8; }
 
-/* ─── Responsive ───────────────────────────── */
+/* Responsive*/
 @media (max-width: 680px) {
   .main-grid { grid-template-columns: 1fr; }
   .page { padding: 24px 16px 48px; }
