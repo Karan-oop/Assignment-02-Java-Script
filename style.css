@@ -484,7 +484,7 @@ body::before {
   transform: translateY(-1px);
 }
 
-/* ─── Weather Panel ────────────────────────── */
+/*Weather Panel*/
 .panel-right { min-height: 280px; }
 
 /* Empty state */
