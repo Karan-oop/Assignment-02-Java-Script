@@ -210,7 +210,7 @@ body::before {
 .input-clear-btn.visible { opacity: 1; pointer-events: all; }
 .input-clear-btn:hover { color: var(--error); }
 
-/* ── Autocomplete Dropdown ─────────────────── */
+/* Autocomplete Dropdown */
 .autocomplete-drop {
   position: absolute;
   top: calc(100% + 6px);
