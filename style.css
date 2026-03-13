@@ -418,7 +418,7 @@ body::before {
 .inline-msg.err  { background: var(--error-bg); border: 1px solid rgba(255,77,109,0.25); color: var(--error); }
 .inline-msg.ok   { background: var(--lime-08); border: 1px solid rgba(182,255,59,0.2); color: var(--lime); }
 
-/* ─── History ──────────────────────────────── */
+/* History*/
 .history-wrap {
   display: flex;
   flex-wrap: wrap;
