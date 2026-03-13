@@ -126,7 +126,7 @@ body::before {
 
 .panel:hover::before { opacity: 1; }
 
-/* ─── Panel Label ─────────────────────────── */
+/* Panel Label*/
 .panel-label {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
