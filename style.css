@@ -89,7 +89,7 @@ body::before {
   color: var(--text);
 }
 
-/* ─── Main Grid ────────────────────────────── */
+/* Main Grid */
 .main-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
