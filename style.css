@@ -46,7 +46,7 @@ body::before {
   z-index: 0;
 }
 
-/* ─── Page wrapper ─────────────────────────── */
+/* Page wrapper */
 .page {
   max-width: 1100px;
   margin: 0 auto;
