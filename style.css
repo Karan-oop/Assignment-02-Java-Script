@@ -303,7 +303,7 @@ body::before {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Search Tips ───────────────────────────── */
+/* Search Tips*/
 .search-tips {
   display: flex;
   flex-wrap: wrap;
