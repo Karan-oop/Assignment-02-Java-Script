@@ -97,7 +97,7 @@ body::before {
   margin-bottom: 16px;
 }
 
-/* ─── Panels ───────────────────────────────── */
+/* Panels*/
 .panel {
   background: var(--panel-bg);
   border: 1px solid var(--border);
